@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <form class="search-form" id="search-form">
+      <div class="wrapper">
+        <input
+          class="search-input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button class="search-button" type="submit">
+          <svg width="40" height="40">
+            <use href="./icon/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </div>
+    </form>
+    <div class="gallery"></div>
     <script src="./js/index.js" type="module"></script>
   </body>
 </html>

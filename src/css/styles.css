@@ -1,0 +1,44 @@
+body {
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 200%;
+  animation: bg-animation 5s infinite alternate;
+}
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+.search-form {
+  margin: 50px 0;
+}
+.wrapper {
+  padding: 10px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  background-color: aliceblue;
+  border-radius: 20;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0px 0px 50px rgb(12, 12, 10);
+}
+.search-input {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 33px;
+  padding: 10px;
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+.search-button {
+  background-color: inherit;
+  border: none;
+  padding: 15px 10px;
+  cursor: pointer;
+  fill: black;
+}
