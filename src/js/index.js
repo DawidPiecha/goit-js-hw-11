@@ -128,6 +128,7 @@ resetButton.addEventListener('click', event => {
   clearGallery();
   loadMoreButton.style.display = 'none';
   resetButton.style.display = 'none';
+  infoForUser.style.display = 'none';
   const form = document.querySelector('.search-form');
   form.reset();
 });
