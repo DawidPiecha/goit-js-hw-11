@@ -20,7 +20,7 @@ const loadMoreButton = document.querySelector('.load-more');
 const resetButton = document.querySelector('.reset-button');
 
 resetButton.style.display = 'none';
-loadMoreButton.style.display = 'flex';
+
 const clearGallery = () => {
   galleryContainer.innerHTML = '';
 };
@@ -91,7 +91,7 @@ searchButton.addEventListener('click', async event => {
 
   galleryContainer.innerHTML = galleryElements;
 
-  // resetButton.style.display = 'inline';
+  resetButton.style.display = 'inline';
 
   const lightbox = new SimpleLightbox('.gallery a');
 });
