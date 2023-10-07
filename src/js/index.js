@@ -8,6 +8,9 @@ const apiKey = '39858115-22d22e85d671686e754408071';
 const errorMessage1 = 'Please enter a search term.';
 const errorMessage2 =
   'Sorry, there are no images matching your search query. Please try again.';
+const errorMessage3 = 'Failed to load more images.';
+const infoMessage = 'No more images available';
+
 const itemsPerPage = 40;
 
 let searchInputTerm = '';
@@ -108,18 +111,27 @@ loadMoreButton.addEventListener('click', async () => {
   const newData = await fetchGallery();
 
   if (!newData) {
-    Notiflix.Notify.failure('Failed to load more images.');
+    Notiflix.Notify.failure(errorMessage3);
     return;
   }
 
   const newHits = newData.hits;
 
   if (newHits.length === 0) {
-    Notiflix.Notify.info('No more images available.');
+    Notiflix.Notify.info(infoMessage);
     return;
   }
   data.hits = [...data.hits, ...newHits];
   displayGallery(data.hits);
 
   const lightbox = new SimpleLightbox('.gallery a');
+});
+
+resetButton.addEventListener('click', event => {
+  event.preventDefault();
+  clearGallery();
+  loadMoreButton.style.display = 'none';
+  resetButton.style.display = 'none';
+  const form = document.querySelector('.search-form');
+  form.reset();
 });
