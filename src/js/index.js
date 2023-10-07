@@ -120,4 +120,6 @@ loadMoreButton.addEventListener('click', async () => {
   }
   data.hits = [...data.hits, ...newHits];
   displayGallery(data.hits);
+
+  const lightbox = new SimpleLightbox('.gallery a');
 });
