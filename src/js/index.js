@@ -1,18 +1,14 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'https://pixabay.com/api/';
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const apiKey = '39858115-22d22e85d671686e754408071';
+import fetchGallery from './api.js';
+
 const errorMessage1 = 'Please enter a search term.';
 const errorMessage2 =
-  'Sorry, there are no images matching your search query. Please try again.';
+  'Sorry, there are no images matching your search query. Please try again or reload the page.';
 const errorMessage3 = 'Failed to load more images.';
 const infoMessage = 'No more images available';
-
-const itemsPerPage = 40;
-
 let searchInputTerm = '';
 let page = 1;
 let data;
@@ -25,16 +21,6 @@ const resetButton = document.querySelector('.reset-button');
 
 resetButton.style.display = 'none';
 loadMoreButton.style.display = 'none';
-
-const fetchGallery = async () => {
-  const url = `?key=${apiKey}&q=${searchInputTerm}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${itemsPerPage}`;
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.log('fetchGallery error:', error);
-  }
-};
 
 const clearGallery = () => {
   galleryContainer.innerHTML = '';
@@ -88,12 +74,14 @@ searchButton.addEventListener('click', async event => {
   data = await fetchGallery();
 
   if (!data) {
+    console.log('no data error:');
     Notiflix.Notify.failure(errorMessage2);
     return;
   }
   const hits = data.hits;
 
   if (hits.length === 0) {
+    console.log('hits.length = 0 error:');
     Notiflix.Notify.failure(errorMessage2);
     return;
   }
