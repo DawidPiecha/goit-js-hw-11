@@ -1,6 +1,6 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'https://pixabay.com/api/';
-
+const apiKey = '39858115-22d22e85d671686e754408071';
 const itemsPerPage = 40;
 
 const fetchGallery = async (searchInputTerm, page) => {
