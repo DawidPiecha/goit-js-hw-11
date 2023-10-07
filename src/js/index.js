@@ -74,14 +74,12 @@ searchButton.addEventListener('click', async event => {
   data = await fetchGallery();
 
   if (!data) {
-    console.log('no data error:');
     Notiflix.Notify.failure(errorMessage2);
     return;
   }
   const hits = data.hits;
 
   if (hits.length === 0) {
-    console.log('hits.length = 0 error:');
     Notiflix.Notify.failure(errorMessage2);
     return;
   }
