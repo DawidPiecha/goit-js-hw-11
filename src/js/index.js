@@ -91,7 +91,7 @@ searchButton.addEventListener('click', async event => {
   resetButton.style.display = 'inline';
   loadMoreButton.style.display = 'flex';
   infoForUser.style.display = 'block';
-  infoForUser.innerHTML = `We've found ${hits.length} pictures from ${totalHits} available.`;
+  infoForUser.innerHTML = `We've found <strong>${hits.length}</strong> pictures from <strong>${totalHits}</strong> available.`;
 
   const lightbox = new SimpleLightbox('.gallery a');
 });
@@ -117,9 +117,9 @@ loadMoreButton.addEventListener('click', async () => {
   displayGallery(data.hits);
 
   infoForUser.style.display = 'block';
-  infoForUser.innerHTML = `We've found ${
+  infoForUser.innerHTML = `We've found <strong>${
     hits.length + newHits.length
-  } pictures from ${newTotalHits} available.`;
+  }</strong> pictures from <strong>${newTotalHits}</strong> available.`;
   const lightbox = new SimpleLightbox('.gallery a');
 });
 
