@@ -111,7 +111,7 @@ svg {
   border: none;
 }
 .load-more svg {
-  margin-top: 20px;
+  margin-top: 10px;
   border-radius: 50%;
   box-shadow: 0px 0px 30px rgb(12, 12, 10);
   fill: white;
@@ -121,4 +121,10 @@ svg {
 .load-more svg:focus {
   transform: scale(1.1);
   fill: black;
+}
+.info-for-user {
+  color: white;
+  font-size: 22px;
+  border: white 1px groove;
+  border-radius: 20px;
 }

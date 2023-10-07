@@ -18,7 +18,9 @@ const searchButton = document.querySelector('.search-button');
 const galleryContainer = document.querySelector('.gallery');
 const loadMoreButton = document.querySelector('.load-more');
 const resetButton = document.querySelector('.reset-button');
+const infoForUser = document.querySelector('.info-for-user');
 
+infoForUser.style.display = 'none';
 resetButton.style.display = 'none';
 loadMoreButton.style.display = 'none';
 
@@ -78,6 +80,7 @@ searchButton.addEventListener('click', async event => {
     return;
   }
   const hits = data.hits;
+  const totalHits = data.totalHits;
 
   if (hits.length === 0) {
     Notiflix.Notify.failure(errorMessage2);
@@ -87,6 +90,8 @@ searchButton.addEventListener('click', async event => {
 
   resetButton.style.display = 'inline';
   loadMoreButton.style.display = 'flex';
+  infoForUser.style.display = 'block';
+  infoForUser.innerHTML = `We've found ${hits.length} pictures from ${totalHits} available.`;
 
   const lightbox = new SimpleLightbox('.gallery a');
 });
@@ -100,8 +105,9 @@ loadMoreButton.addEventListener('click', async () => {
     Notiflix.Notify.failure(errorMessage3);
     return;
   }
-
+  const hits = data.hits;
   const newHits = newData.hits;
+  const newTotalHits = newData.totalHits;
 
   if (newHits.length === 0) {
     Notiflix.Notify.info(infoMessage);
@@ -110,6 +116,10 @@ loadMoreButton.addEventListener('click', async () => {
   data.hits = [...data.hits, ...newHits];
   displayGallery(data.hits);
 
+  infoForUser.style.display = 'block';
+  infoForUser.innerHTML = `We've found ${
+    hits.length + newHits.length
+  } pictures from ${newTotalHits} available.`;
   const lightbox = new SimpleLightbox('.gallery a');
 });
 
