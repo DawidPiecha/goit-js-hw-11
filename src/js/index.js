@@ -3,7 +3,7 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import axios from 'axios';
 axios.defaults.baseURL = 'https://pixabay.com/api/';
-import fetchGallery from './api.js';
+import { fetchGallery } from './api.js';
 
 const errorMessage1 = 'Please enter a search term.';
 const errorMessage2 =
@@ -72,7 +72,7 @@ searchButton.addEventListener('click', async event => {
     return;
   }
 
-  data = await fetchGallery();
+  data = await fetchGallery(searchInputTerm, page);
 
   if (!data) {
     Notiflix.Notify.failure(errorMessage2);
@@ -95,7 +95,7 @@ searchButton.addEventListener('click', async event => {
 loadMoreButton.addEventListener('click', async () => {
   page++;
 
-  const newData = await fetchGallery();
+  const newData = await fetchGallery(searchInputTerm, page);
 
   if (!newData) {
     Notiflix.Notify.failure(errorMessage3);
