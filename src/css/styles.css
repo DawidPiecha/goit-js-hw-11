@@ -123,8 +123,11 @@ svg {
   fill: black;
 }
 .info-for-user {
+  margin: 30px auto;
   color: white;
+  max-width: 30vw;
   font-size: 22px;
   border: white 1px groove;
   border-radius: 20px;
+  box-shadow: 0px 0px 30px rgb(12, 12, 10);
 }
